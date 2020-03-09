@@ -6,7 +6,8 @@
   "author": "Kris <kriskuiper74@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon server"
+		"start": "node server",
+		"dev": "nodemon server"
   },
   "dependencies": {
     "express": "^4.17.1",
