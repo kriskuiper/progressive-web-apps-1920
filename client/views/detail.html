@@ -7,5 +7,19 @@
 			<h2 class="detail-page__title">{{ launch.mission_name }}</h2>
 			<p class="detail-page__rocket">Rocket: {{ launch.rocket.rocket_name }}</p>
 		</header>
+
+		<h3 class="detail-page__title">Description:</h3>
+		<p>{{ launch.details }}</p>
+
+		<h3 class="detail-page__title">Video:</h3>
+		<div class="detail-page__video">
+			<div class="fixed-ratio fixed-ratio-1by1">
+				<iframe
+					src="{{ yt_prefix }}{{ launch.links.youtube_id }}"
+					class="fixed-ratio-content"
+					allowfullscreen
+				></iframe>
+			</div>
+		</div>
 	</article>
 {% endblock %}

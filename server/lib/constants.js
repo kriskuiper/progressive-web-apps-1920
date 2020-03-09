@@ -1,4 +1,3 @@
-const PORT = 3031
-const API_ENDPOINT = 'https://api.spacexdata.com/v3/launches'
-
-module.exports = { PORT, API_ENDPOINT }
+exports.PORT = 3031
+exports.API_ENDPOINT = 'https://api.spacexdata.com/v3/launches'
+exports.YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/'
