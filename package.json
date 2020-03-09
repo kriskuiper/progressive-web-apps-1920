@@ -1,0 +1,25 @@
+{
+  "name": "progressive-web-apps-1920",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kriskuiper/progressive-web-apps-1920.git",
+  "author": "Kris <kriskuiper74@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon server"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "module-alias": "^2.2.2",
+    "node-fetch": "^2.6.0",
+    "nunjucks": "^3.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "rollup": "^2.0.2"
+	},
+	"_moduleAliases": {
+		"@lib": "server/lib",
+		"@routes": "server/routes"
+	}
+}
