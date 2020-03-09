@@ -1,11 +1,10 @@
 {% extends '../templates/base.html' %}
+{% import '../partials/launch-item.html' as launchItem %}
 
 {% block content %}
 	<h1>Homepage</h1>
 
 	{% for launch in launches %}
-		<article>
-			{{ launch.mission_name }}
-		</article>
+		{{ launchItem.item(launch) }}
 	{% endfor %}
 {% endblock %}

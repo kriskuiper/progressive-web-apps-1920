@@ -6,6 +6,7 @@ const { PORT } = require('@lib/constants')
 const app = express()
 
 app.get('/', require('@routes/index'))
+app.get('/:id', require('@routes/detail'))
 
 app.use(require('@routes/not-found'))
 app.use(require('@routes/error'))
