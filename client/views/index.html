@@ -4,7 +4,9 @@
 {% block content %}
 	<h1>Homepage</h1>
 
-	{% for launch in launches %}
-		{{ launchItem.item(launch) }}
-	{% endfor %}
+	<div class="launch-list">
+		{% for launch in launches %}
+			{{ launchItem.item(launch) }}
+		{% endfor %}
+	</div>
 {% endblock %}

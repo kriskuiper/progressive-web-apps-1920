@@ -1,8 +1,10 @@
 {% macro item(launch) %}
 	<article class="launch-item">
 		<header class="launch-item__header">
-			<h3>{{ launch.mission_name }}</h3>
-			<p>{{ launch.launch_date_utc }}</p>
+			<div>
+				<h3>{{ launch.mission_name }}</h3>
+				<p>{{ launch.launch_date_utc }}</p>
+			</div>
 		</header>
 
 		<picture class="fixed-ratio fixed-ratio-1by1">
