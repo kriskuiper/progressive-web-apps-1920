@@ -1,6 +1,15 @@
+{% macro icon(isSuccess) %}
+	{% if isSuccess %}
+		<img src="/icons/success.svg" class="launch-item__icon" alt="">
+	{% else %}
+		<img src="/icons/error.svg" class="launch-item__icon" alt="">
+	{% endif %}
+{% endmacro %}
+
 {% macro item(launch) %}
 	<article class="launch-item">
 		<header class="launch-item__header">
+			{{ icon(launch.launch_success) }}
 			<div>
 				<h3>{{ launch.mission_name }}</h3>
 				<p>{{ launch.launch_date_utc }}</p>
