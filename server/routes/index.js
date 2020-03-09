@@ -7,7 +7,10 @@ module.exports = async (request, response, next) => {
 		const apiResponse = await fetch(API_ENDPOINT)
 		const launches = await apiResponse.json(apiResponse)
 
-		response.send(renderer.render('views/index.html', { launches }))
+		response.send(renderer.render('views/index.html', {
+			launches,
+			title: 'Homepage'
+		}))
 	} catch(error) {
 		next(error)
 	}
