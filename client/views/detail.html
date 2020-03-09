@@ -2,4 +2,10 @@
 
 {% block content %}
 	<h1>{{ launch.mission_name }}</h1>
+	<article class="detail-page">
+		<header class="detail-page__header">
+			<h2 class="detail-page__title">{{ launch.mission_name }}</h2>
+			<p class="detail-page__rocket">Rocket: {{ launch.rocket.rocket_name }}</p>
+		</header>
+	</article>
 {% endblock %}
