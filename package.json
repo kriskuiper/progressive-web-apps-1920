@@ -6,9 +6,10 @@
   "author": "Kris <kriskuiper74@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && run-s build:data build:pages",
+    "build": "rimraf dist && run-s build:*",
     "build:data": "node ./scripts/write-data.js",
-    "build:pages": "node ./scripts/build-pages.js"
+		"build:pages": "node ./scripts/build-pages.js",
+		"build:css": "ncp src/static dist"
   },
   "dependencies": {
     "express": "^4.17.1",
