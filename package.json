@@ -6,7 +6,8 @@
   "author": "Kris <kriskuiper74@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && run-s build:*",
+		"prebuild": "rimraf dist",
+    "build": "run-s build:*",
     "build:data": "node ./scripts/write-data.js",
 		"build:pages": "node ./scripts/build-pages.js",
 		"build:css": "ncp src/static dist"
