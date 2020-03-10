@@ -6,8 +6,9 @@
   "author": "Kris <kriskuiper74@gmail.com>",
   "license": "MIT",
   "scripts": {
-		"start": "node server",
-		"dev": "nodemon server"
+		"build": "rimraf dist && run-s build:data build:pages",
+		"build:data": "node ./scripts/write-data.js",
+		"build:pages": "node ./scripts/build-pages.js"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -16,11 +17,14 @@
     "nunjucks": "^3.2.0"
   },
   "devDependencies": {
+    "mkdirp": "^1.0.3",
     "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
     "rollup": "^2.0.2"
-	},
-	"_moduleAliases": {
-		"@lib": "server/lib",
-		"@routes": "server/routes"
-	}
+  },
+  "_moduleAliases": {
+    "@lib": "server/lib",
+    "@routes": "server/routes"
+  }
 }
