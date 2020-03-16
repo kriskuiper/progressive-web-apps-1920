@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/styles/app.css">
+	<link rel="manifest" href="/manifest.json">
 	<title>{{ title }} | Launcher</title>
 </head>
 <body>
@@ -12,5 +13,13 @@
 	<main class="page">
 		{% block content %}{% endblock %}
 	</main>
+
+	<script src="/scripts/bundle.js"></script>
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('/service-worker.js')
+				.then(registration => registration.update())
+		}
+	</script>
 </body>
 </html>
