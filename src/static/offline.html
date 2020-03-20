@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/styles/app.css">
+	<link rel="manifest" href="/manifest.json">
+	<title>Offline | Launcher</title>
+</head>
+<body>
+	<header class="app-header">
+		<h1 class="app-title">Launcher 🚀</h1>
+		<p class="app-subtitle">All launches from SpaceX in one place</p>
+	</header>
+
+	<main class="page">
+		<h1>You are offline</h1>
+		<p>Sadly no offline support just yet :(</p>
+	</main>
+
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('/service-worker.js')
+				.then(registration => registration.update())
+		}
+	</script>
+</body>
+</html>
