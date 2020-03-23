@@ -1,7 +1,11 @@
 const PRECACHE_NAME = 'launcher-precache'
 const RUNTIME_CACHE_NAME = 'launcher-runtime-cache'
 const HTML_CACHE_NAME = 'launcher-html-cache'
-const PRECACHE_ASSETS = ['/styles/app.css', '/offline.html']
+const PRECACHE_ASSETS = [
+	'/scripts/bundle.js',
+	'/styles/app.css',
+	'/offline.html'
+]
 
 // Precache some static assets
 self.addEventListener('install', (event) => {
