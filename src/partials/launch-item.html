@@ -6,6 +6,23 @@
 	{% endif %}
 {% endmacro %}
 
+{% macro image(launch) %}
+	<img
+		class="launch-item__image fixed-ratio-content"
+		src="{{ launch.links.mission_patch }}"
+		alt="Launch logo"
+		srcset="
+			{{ launch.links.mission_patch_small }} 400w,
+			{{ launch.links.mission_patch }} 800w
+		"
+		sizes="
+			(min-width: 800px) 33vw,
+			(min-width: 400px) 50vw,
+			100vw
+		"
+	>
+{% endmacro %}
+
 {% macro item(launch) %}
 	<article class="launch-item">
 		<header class="launch-item__header">
@@ -17,11 +34,7 @@
 		</header>
 
 		<picture class="fixed-ratio fixed-ratio-1by1">
-			<img
-				class="launch-item__image fixed-ratio-content"
-				src="{{ launch.links.mission_patch }}"
-				alt=""
-			>
+			{{ image(launch) }}
 		</picture>
 
 		<div class="launch-item__details">
