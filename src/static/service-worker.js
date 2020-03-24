@@ -54,7 +54,7 @@ function fetchAndCache(request, cacheName) {
 				throw new TypeError('Bad response status!')
 			}
 
-			caches.open(cacheName)
+			return caches.open(cacheName)
 				// You can't fiddle with the original response because
 				// of how things work, so we have to clone the response.
 				.then(
