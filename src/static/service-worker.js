@@ -1,6 +1,5 @@
 const PRECACHE_NAME = 'launcher-precache'
 const RUNTIME_CACHE_NAME = 'launcher-runtime-cache'
-const HTML_CACHE_NAME = 'launcher-html-cache'
 const PRECACHE_ASSETS = [
 	'/scripts/bundle.js',
 	'/styles/app.css',
@@ -42,9 +41,24 @@ self.addEventListener('fetch', (event) => {
 	// in cache and serve just the request url
 	const { request } = event
 
-	event.respondWith(
-		fetchAndCache(request, HTML_CACHE_NAME)
-	)
+	if (isCoreGetRequest(request)) {
+		event.respondWith(
+			caches.open(PRECACHE_NAME)
+				.then(cache => cache.match(request.url))
+		)
+	} else if (isHtmlGetRequest(request)) {
+		event.respondWith(
+			caches.open(RUNTIME_CACHE_NAME)
+				.then(cache => cache.match(request.url))
+				.then(response => response || fetchAndCache(request, RUNTIME_CACHE_NAME))
+				.catch(error => {
+					console.error(error)
+
+					return caches.open(PRECACHE_NAME)
+						.then(cache => cache.match('/offline.html'))
+				})
+		)
+	}
 })
 
 function fetchAndCache(request, cacheName) {
@@ -64,8 +78,12 @@ function fetchAndCache(request, cacheName) {
 		})
 }
 
+function isHtmlGetRequest(request) {
+	return request.method === 'GET' && (request.headers.get('accept') !== null && request.headers.get('accept').indexOf('text/html') > -1);
+}
+
 function isCoreGetRequest(request) {
-	return request.method === 'GET' && PRECACHE_ASSETS.includes(getPathName(request))
+	return request.method === 'GET' && PRECACHE_ASSETS.includes(getPathName(request));
 }
 
 function getPathName(request) {
