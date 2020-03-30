@@ -2,8 +2,6 @@ const { src, dest, series } = require('gulp')
 const rev = require('gulp-rev')
 const revRewrite = require('gulp-rev-rewrite')
 
-const manifest = src('dist/assets/rev-manifest.json')
-
 series(
 	revision,
 	rewriteIndexPage,
@@ -21,18 +19,24 @@ function revision() {
 }
 
 function rewriteIndexPage() {
+	const manifest = src('dist/assets/rev-manifest.json')
+
 	return src('dist/*.html')
 		.pipe(revRewrite({ manifest }))
 		.pipe(dest('dist'))
 }
 
 function rewriteDetailPages() {
+	const manifest = src('dist/assets/rev-manifest.json')
+
 	return src('dist/**/**/index.html')
 		.pipe(revRewrite({ manifest }))
 		.pipe(dest('dist'))
 }
 
 function rewriteServiceWorker() {
+	const manifest = src('dist/assets/rev-manifest.json')
+
 	return src('dist/service-worker.js')
 		.pipe(revRewrite({ manifest }))
 		.pipe(dest('dist'))
