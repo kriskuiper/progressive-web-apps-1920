@@ -88,7 +88,6 @@ p:not(:last-child) {
 	width: 100%;
 	height: 100%;
 	max-width: inherit;
-	background: #eee;
 }
 
 .fixed-ratio-1by1 {
