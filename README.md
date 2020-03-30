@@ -135,7 +135,14 @@ Every pre-cached file gets a newly created hash when It's updated. During build 
 This way the browser always uses the latest version of the CSS file and therefore the styling is always up to date. This is the same for the JavaScript file of the application.
 
 ## 3. Optimizing the critical rendering path
+The critical rendering path is all about what the browser has to do to show your website to the user in a meaningful way. This consists of downloading and parsing the HTML (mostly the least expensive task on it's own), downloading and parsing the CSS (this is render-blocking on it's own) and downloading and parsing the JavaScript (mostly the most expensive task a browser has to do).
 
+### How can we optimize this?
+The simplest way to optimize the critical rendering path is to minify and uglify all files that the browser has to download and parse. This means we have to at least minify and uglify the CSS and JS files. Fortunately we can automate this process using the PostCSS 'cssnano' plugin and the `rollup-plugin-terser`. 
+
+Another thing we can do is compressing the files that get send to the browser, the smaller the size, the faster the download time is going to be, the earlier the browser can start parsing the files. Now takes care of compression out of the box so we don't have to deal with that.
+
+Also, when using the cache because of using a service worker we don't even have to go to the network to get the CSS or JS file, we can just serve it from cache, which speeds up the process even more.
 
 ## Project wishlist
 - [ ] Make a src/pages folder map the output a la Gatsby or Nuxt instead of having to fiddle around with the `build-pages` script when the content of the application changes.
