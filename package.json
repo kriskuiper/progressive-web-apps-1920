@@ -13,9 +13,10 @@
     "build": "run-s build:*",
     "build:data": "node ./scripts/write-data.js",
     "build:pages": "node ./scripts/build-pages.js",
-		"build:static": "ncp src/static dist",
-		"build:css": "postcss src/static/styles/app.css > dist/styles/app.css",
-    "build:js": "rollup -c"
+    "build:static": "ncp src/static dist && rimraf dist/scripts",
+    "build:css": "postcss src/static/styles/app.css > dist/styles/app.css",
+		"build:js": "rollup -c",
+		"build:revision": "node ./scripts/revision-and-rewrite.js"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -27,6 +28,9 @@
   "devDependencies": {
     "chokidar-cli": "^2.1.0",
     "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-rev": "^9.0.0",
+    "gulp-rev-rewrite": "^3.0.2",
     "mkdirp": "^1.0.3",
     "ncp": "^2.0.0",
     "nodemon": "^2.0.2",
